@@ -14,8 +14,7 @@ Bootstrap(app)
 with app.app_context():
     mongo = PyMongo(app)
 
-# user can use both get and post methods to retrieve the data
-myCollection =requests.get("https://api.mlab.com/api/1/databases/car_models/collections/cars?apiKey=nLpPIkExIzD45P9OyqCYrLS8JVtpBHlS",
+myCollection =requests.get("https://api.mlab.com/api/1/databases/car_models/collections/cars?apiKey=",
 )
 @app.route('/find/<string:car_make>/<string:car_model>',methods=["GET"])
 def find_car(car_make,car_model):
@@ -28,7 +27,7 @@ def find_car(car_make,car_model):
 def find_car_type():
     cars = mongo.db.cars
     if not request.json:
-        return "make a request"
+        return "make a request /find/car-make/car-model"
     return "No access to the server"
 
 if __name__ == '__main__':
